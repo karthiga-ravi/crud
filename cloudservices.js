@@ -124,13 +124,39 @@ const App = () => {
 
 export default App;
 
+APP.CSS
+/* src/App.css */
+
+.App {
+  text-align: center;
+  margin: 20px;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+input {
+  margin: 5px;
+  padding: 8px;
+}
+
+button {
+  margin-left: 5px;
+  padding: 8px 12px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
 
 
 AUTH 0:
 
 LOGIN 
 LOGOUT
-PROFIKE
+PROFILE
 INDEX 
 
 TAKE CODE FROM WEBSITE
