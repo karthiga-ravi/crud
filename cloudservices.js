@@ -416,3 +416,58 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+
+
+API CREATION
+
+const express = require('express');
+const app = express();
+const port = 3000;
+
+// Middleware to parse JSON bodies
+app.use(express.json());
+
+// Sample data (in-memory storage for simplicity)
+let users = [];
+
+// Basic GET route
+app.get('/', (req, res) => {
+  res.send('Welcome to the Simple API!');
+});
+
+// GET route to fetch all users
+app.get('/users', (req, res) => {
+  res.json(users);
+});
+
+// POST route to add a new user
+app.post('/users', (req, res) => {
+  const { name } = req.body;
+
+  // Simple validation
+  if (!name) {
+    return res.status(400).json({ message: 'Name required' });
+  }
+
+  // Create a new user object
+  const newUser = { id: users.length + 1, name};
+  
+  // Add the user to the in-memory array
+  users.push(newUser);
+  
+  // Return the newly created user
+  res.status(201).json(newUser);
+});
+
+// DELETE route to delete a user by ID
+app.delete('/users/:id', (req, res) => {
+  const { id } = req.params;
+  users.splice(id+1, 1);
+  res.json({ message: 'User deleted' });
+});
+
+// Start the server
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
+});
